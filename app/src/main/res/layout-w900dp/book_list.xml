@@ -10,7 +10,7 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context=".ItemListActivity">
+    tools:context=".BookListActivity">
 
     <!--
     This layout is a two-pane layout for the Items
@@ -27,8 +27,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="cat.nilnet.mybooks.ItemListActivity"
-        tools:listitem="@layout/item_list_content" />
+        tools:context="cat.nilnet.mybooks.BookListActivity"
+        tools:listitem="@layout/book_list_content_par" />
 
     <FrameLayout
         android:id="@+id/item_detail_container"
