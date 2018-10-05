@@ -22,7 +22,7 @@ public class BookItem {
         this.title = title;
         this.author = author;
         this.publish_date = new Date();
-        this.description = description; //"Lorem ipsum dolor sit amet.\nWinter is coming.\nHola que tal estem. Això és una descripció fake del llibre.";
+        this.description = description;
         this.image_url = "de moment és imatge fixe";
 
     }
