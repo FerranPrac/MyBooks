@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,7 @@ public class BookDetailFragment extends Fragment {
 
 
     /**
-     * The dummy content this fragment is presenting.
+     * The dummy book content this fragment is presenting.
      */
     private BookItem bookItem;
 
@@ -52,8 +51,6 @@ public class BookDetailFragment extends Fragment {
 
             bookItem = DummyContent.BOOK_ITEM_MAP.get(Integer.parseInt(getArguments().getString(ARG_ITEM_ID)));
 
-            Log.v("ARG_ITEM ID", String.valueOf(bookItem.getId()));
-
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
@@ -67,7 +64,7 @@ public class BookDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.book_detail, container, false);
 
-        // Show the dummy content as text in a TextView.
+        // Show the dummy book content as text in a TextView.
         if (bookItem != null) {
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

@@ -79,7 +79,7 @@ public class BookListActivity extends AppCompatActivity {
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
+
                 BookItem item = (BookItem) view.getTag();
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
@@ -109,6 +109,7 @@ public class BookListActivity extends AppCompatActivity {
 
         @Override
         public int getItemViewType(int position) {
+            // retornem 0 si es parell o 1 si és imparell
             return position % 2;
         }
 
@@ -117,6 +118,7 @@ public class BookListActivity extends AppCompatActivity {
 
             View view = null;
 
+            // segons si és parell o imparell carreguem un layout o un altre
             if (viewType == 0 ) {
                 view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.book_list_content_par, parent, false);

@@ -9,9 +9,6 @@ public class BookItem {
     private String title;
     private String author;
     private Date publish_date;
-
-
-
     private String description;
     private String image_url;
 
@@ -24,7 +21,6 @@ public class BookItem {
         this.publish_date = new Date();
         this.description = description;
         this.image_url = "de moment és imatge fixe";
-
     }
 
 
