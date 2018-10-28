@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "362554962040",
+    "firebase_url": "https://mybooks-82d39.firebaseio.com",
+    "project_id": "mybooks-82d39",
+    "storage_bucket": "mybooks-82d39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362554962040:android:fc5f1c17ae8c105f",
+        "android_client_info": {
+          "package_name": "cat.nilnet.mybooks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "362554962040-m96ur1iil1usvnmguo46eac5jnpc4mq7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkLrTShKzQ1RzLVp2qh5FaYreLKX8dapA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
