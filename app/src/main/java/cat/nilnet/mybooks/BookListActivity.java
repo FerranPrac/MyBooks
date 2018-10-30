@@ -9,15 +9,22 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
+import android.widget.Toast;
 
-import cat.nilnet.mybooks.dummy.DummyContent;
+
+import cat.nilnet.mybooks.model.BookContent;
 import cat.nilnet.mybooks.model.BookItem;
 
 import java.util.List;
@@ -40,6 +47,12 @@ public class BookListActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private FirebaseAuth mAuth;
 
+    private String email;
+    private String password;
+    private BookContent bcontent;
+
+    private static final String TAG = BookListActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +61,32 @@ public class BookListActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
 
+        email = getResources().getString(R.string.firebase_email);
+        password = getResources().getString(R.string.firebase_password);
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(BookListActivity.this, "Authentication success.",
+                                    Toast.LENGTH_SHORT).show();
+                            // recuperar, comparar i afegir al ORM dades de firebase amb els mètodes de BookContent
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(BookListActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            //No fem res. Agafarem les dades ja guardades del ORM per la DB local
+                        }
+
+
+                    }
+                });
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
@@ -75,7 +114,10 @@ public class BookListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, DummyContent.BOOKS_ITEMS, mTwoPane));
+
+        // TODO canviar a dades ORM
+
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, BookContent.BOOKS_ITEMS, mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter

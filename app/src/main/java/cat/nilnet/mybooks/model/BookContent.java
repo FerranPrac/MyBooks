@@ -1,11 +1,9 @@
-package cat.nilnet.mybooks.dummy;
+package cat.nilnet.mybooks.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import cat.nilnet.mybooks.model.BookItem;
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -13,7 +11,7 @@ import cat.nilnet.mybooks.model.BookItem;
  * Modificat per utilitzar BookItems
  *
  */
-public class DummyContent {
+public class BookContent {
 
     /**
      * An array of sample book items.
@@ -28,12 +26,12 @@ public class DummyContent {
 
     private static final int COUNT = 25;
 
-    static {
+    /*static {
         // Add some sample items.
         for (int i = 1; i <= COUNT; i++) {
             addBookItem(createBookItem(i));
         }
-    }
+    }*/
 
 
     private static void addBookItem(BookItem book) {
@@ -45,4 +43,15 @@ public class DummyContent {
     private static BookItem createBookItem(int position) {
         return new BookItem(position, "Title" + position, "Author" + position, "Description " + position);
     }
+
+
+    public static List<BookItem> getAll(int position) {
+        for (int i = position; i <= COUNT; i++) {
+            addBookItem(createBookItem(i));
+        }
+
+        return BOOKS_ITEMS;
+    }
+
+
 }

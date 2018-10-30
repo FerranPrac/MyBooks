@@ -2,4 +2,7 @@
     <string name="app_name">MyBooks</string>
     <string name="title_item_detail">Book Detail</string>
     <string name="alt_dummy_image">Dummy Image</string>
+
+    <string name="firebase_email">felfbcn@uoc.edu</string>
+    <string name="firebase_password">testing987</string>
 </resources>

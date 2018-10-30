@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 
-import cat.nilnet.mybooks.dummy.DummyContent;
+import cat.nilnet.mybooks.model.BookContent;
 import cat.nilnet.mybooks.model.BookItem;
 
 /**
@@ -49,7 +49,7 @@ public class BookDetailFragment extends Fragment {
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
 
-            bookItem = DummyContent.BOOK_ITEM_MAP.get(Integer.parseInt(getArguments().getString(ARG_ITEM_ID)));
+            bookItem = BookContent.BOOK_ITEM_MAP.get(Integer.parseInt(getArguments().getString(ARG_ITEM_ID)));
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
