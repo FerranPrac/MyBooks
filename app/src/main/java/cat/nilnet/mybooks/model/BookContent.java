@@ -62,5 +62,9 @@ public class BookContent {
         return books;
     }
 
+    public static boolean exists (BookItem book) {
 
+
+        return true;
+    }
 }
