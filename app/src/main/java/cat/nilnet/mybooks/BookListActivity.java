@@ -63,7 +63,8 @@ public class BookListActivity extends AppCompatActivity {
 
         email = getResources().getString(R.string.firebase_email);
         password = getResources().getString(R.string.firebase_password);
-
+        BookItem.deleteAll(BookItem.class);
+        BookContent.createBooksList();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -116,8 +117,8 @@ public class BookListActivity extends AppCompatActivity {
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
 
         // TODO canviar a dades ORM
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, BookContent.getBooks(), mTwoPane));
 
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, BookContent.BOOKS_ITEMS, mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter

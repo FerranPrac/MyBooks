@@ -1,24 +1,21 @@
 package cat.nilnet.mybooks.model;
 
-import com.orm.SugarRecord;
-
 import java.util.Date;
 
-public class BookItem extends SugarRecord<BookItem> {
+public class BookItemOld {
 
 
-    String title;
-    String author;
-    Date publish_date;
-    String description;
-    String image_url;
+    private int id;
+    private String title;
+    private String author;
+    private Date publish_date;
+    private String description;
+    private String image_url;
 
 
-    public BookItem(){
-    }
 
-    public BookItem(String title, String author, String description) {
-
+    public BookItemOld(int id, String title, String author, String description) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.publish_date = new Date();
@@ -27,18 +24,20 @@ public class BookItem extends SugarRecord<BookItem> {
     }
 
 
-
+    public int getId() {
+        return id;
+    }
 
     public String getTitle() {
-        return this.title;
+        return title;
     }
 
     public String getAuthor() {
-        return this.author;
+        return author;
     }
 
     public String getDescription() {
-        return this.description;
+        return description;
     }
 
     public Date getPublish_date() {

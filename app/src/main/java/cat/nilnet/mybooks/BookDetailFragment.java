@@ -49,8 +49,8 @@ public class BookDetailFragment extends Fragment {
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
 
-            bookItem = BookContent.BOOK_ITEM_MAP.get(Integer.parseInt(getArguments().getString(ARG_ITEM_ID)));
-
+            //bookItem = BookContent.BOOK_ITEM_MAP.get(Long.parseLong(getArguments().getString(ARG_ITEM_ID)));
+            bookItem = BookItem.findById(BookItem.class, Long.parseLong(getArguments().getString(ARG_ITEM_ID)));
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {

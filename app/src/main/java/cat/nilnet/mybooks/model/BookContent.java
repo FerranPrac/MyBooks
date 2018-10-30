@@ -22,7 +22,7 @@ public class BookContent {
     /**
      * A map of sample book items, by ID.
      */
-    public static final Map<Integer, BookItem> BOOK_ITEM_MAP = new HashMap<Integer, BookItem>();
+    public static final Map<Long, BookItem> BOOK_ITEM_MAP = new HashMap<Long, BookItem>();
 
     private static final int COUNT = 25;
 
@@ -41,16 +41,25 @@ public class BookContent {
 
 
     private static BookItem createBookItem(int position) {
-        return new BookItem(position, "Title" + position, "Author" + position, "Description " + position);
+        //return new BookItem(position, "Title" + position, "Author" + position, "Description " + position);
+        BookItem book =  new BookItem("Titlesad" + position, "Authorasd" + position, "Descriptionasd " + position);
+        book.save();
+        return book;
     }
 
 
-    public static List<BookItem> getAll(int position) {
-        for (int i = position; i <= COUNT; i++) {
+    public static void createBooksList() {
+        for (int i = 1; i <= COUNT; i++) {
             addBookItem(createBookItem(i));
         }
 
-        return BOOKS_ITEMS;
+        return;
+    }
+
+    public static List<BookItem> getBooks() {
+
+        List<BookItem> books = BookItem.listAll(BookItem.class);
+        return books;
     }
 
 
