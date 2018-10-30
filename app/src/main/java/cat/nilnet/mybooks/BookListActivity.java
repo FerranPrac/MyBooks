@@ -49,7 +49,6 @@ public class BookListActivity extends AppCompatActivity {
 
     private String email;
     private String password;
-    private BookContent bcontent;
 
     private static final String TAG = BookListActivity.class.getSimpleName();
 
@@ -63,8 +62,9 @@ public class BookListActivity extends AppCompatActivity {
 
         email = getResources().getString(R.string.firebase_email);
         password = getResources().getString(R.string.firebase_password);
-        BookItem.deleteAll(BookItem.class);
-        BookContent.createBooksList();
+        //BookItem.deleteAll(BookItem.class);
+
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -75,14 +75,14 @@ public class BookListActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(BookListActivity.this, "Authentication success.",
                                     Toast.LENGTH_SHORT).show();
-                            // recuperar, comparar i afegir al ORM dades de firebase amb els mètodes de BookContent
+                            BookContent.fetchData();
 
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(BookListActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            //No fem res. Agafarem les dades ja guardades del ORM per la DB local
+
                         }
 
 
@@ -115,8 +115,6 @@ public class BookListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-
-        // TODO canviar a dades ORM
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, BookContent.getBooks(), mTwoPane));
 
     }
