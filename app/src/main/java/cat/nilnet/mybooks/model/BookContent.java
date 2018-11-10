@@ -37,18 +37,20 @@ public class BookContent {
      */
     public static final Map<Long, BookItem> BOOK_ITEM_MAP = new HashMap<Long, BookItem>();
 
-    private static final int COUNT = 25;
+    //private static final int COUNT = 25;
 
 
+    /*
     private static void addBookItem(BookItem book) {
+
         BOOKS_ITEMS.add(book);
         BOOK_ITEM_MAP.put(book.getId(), book);
     }
-
-
+*/
+/*
     private static BookItem createBookItem(int position) {
 
-        BookItem book =  new BookItem("Titlesad" + position, "Authorasd" + position, "Descriptionasd " + position);
+        BookItem book =  new BookItem("Title" + position, "Author" + position, "Description " + position);
         book.save();
         return book;
     }
@@ -61,7 +63,7 @@ public class BookContent {
 
         return;
     }
-
+*/
     public static List<BookItem> getBooks() {
 
         List<BookItem> books = BookItem.listAll(BookItem.class);
